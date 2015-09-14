@@ -12,7 +12,7 @@ class CurrentGame extends RiotApi {
   }
 
   def getCurrentGameFor(platformId: String, summonerId: Long) = {
-    val url = base_uri + "/observer-mode/rest/consumer/getSpectatorGameInfo/" + platformId + "/" + summonerId.toString
+    val url = baseUri + "/observer-mode/rest/consumer/getSpectatorGameInfo/" + platformId + "/" + summonerId.toString
     RiotRetriever.getData(self, url, params)
   }
 }

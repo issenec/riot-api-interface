@@ -3,7 +3,7 @@ package com.rai.api
 import com.rai.crawler.RiotRetriever
 import uk.co.robinmurphy.http.Response
 
-case class GetFeaturedGames
+case class GetFeaturedGames()
 
 class FeaturedGames extends RiotApi {
   def receive = {
@@ -12,7 +12,7 @@ class FeaturedGames extends RiotApi {
   }
 
   def getFeaturedGames = {
-    val url = base_uri + "/observer-mode/rest/featured"
+    val url = baseUri + "/observer-mode/rest/featured"
     RiotRetriever.getData(self, url, params)
   }
 }

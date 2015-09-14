@@ -7,6 +7,8 @@ case class GetAll(freeToPlay: Boolean = false)
 case class GetById(id: Int)
 
 class Champion extends RiotApi {
+  val championUrl = baseUri + "/api/lol/" + region + "/v1.2/champion"
+
   def receive = {
     case GetAll(freeToPlay) => getAll(freeToPlay)
     case GetById(champ) => getById(champ)
@@ -14,14 +16,14 @@ class Champion extends RiotApi {
   }
 
   def getAll(freeToPlay: Boolean) = {
-    val url = base_uri + "/api/lol/" + region + "/v1.2/champion"
+    val url = championUrl
     if (freeToPlay)
       params += ("freeToPlay" -> "true")
     RiotRetriever.getData(self, url, params)
   }
 
   def getById(id: Int) = {
-    val url = base_uri + "/api/lol/" + region + "/v1.2/champion/" + id.toString
+    val url = championUrl + "/" + id.toString
     RiotRetriever.getData(self, url, params)
   }
 }

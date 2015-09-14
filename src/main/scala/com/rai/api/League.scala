@@ -1,31 +1,41 @@
 package com.rai.api
 
+import com.rai.api.MatchTypes._
 import com.rai.crawler.RiotRetriever
 import uk.co.robinmurphy.http.Response
 
-case class GetLeaguesBySummoner(summonerIds: List[Long])
-case class GetLeagueEntriesBySummoner(summonerIds: List[Long])
-case class GetLeaguesByTeam(teamIds: List[Long])
-case class GetLeagueEntriesByTeam(teamIds: List[Long])
-case class GetChallengerLeague
-case class GetMasterLeague
+/** NOTE: I know that the following messages are in the Riot API.
+  * However, I don't really have a need for them. If someone needs them,
+  * contact me @ the Riot API forums (Randomodnar)
+  */
+//case class GetLeaguesBySummoner(summonerIds: List[Long])
+//case class GetLeagueEntriesBySummoner(summonerIds: List[Long])
+//case class GetLeaguesByTeam(teamIds: List[Long])
+//case class GetLeagueEntriesByTeam(teamIds: List[Long])
+
+/** Valid values are RANKED_SOLO_5x5, RANKED_TEAM_3x3, RANKED_TEAM_5x5 */
+case class GetMasterLeague(leagueType: MatchTypes = RANKED_SOLO_5X5)
+case class GetChallengerLeague(leagueType: MatchTypes = RANKED_SOLO_5X5)
+
 
 class League extends RiotApi {
+  val leagueUrl = baseUri + "/api/lol/" + region + "/v2.5/league/"
+
   def receive = {
-    case GetAll(freeToPlay) => getAll(freeToPlay)
-    case GetById(champ) => getById(champ)
+    case GetChallengerLeague(leagueType) => getChallengerLeague(leagueType)
+    case GetMasterLeague(leagueType) => getMasterLeague(leagueType)
     case res: Response => returnResults(res)
   }
 
-  def getAll(freeToPlay: Boolean) = {
-    val url = base_uri + "/api/lol/" + region + "/v1.2/champion"
-    if (freeToPlay)
-      params += ("freeToPlay" -> "true")
+  def getMasterLeague(leagueType: MatchTypes) = {
+    val url = leagueUrl + "master"
+    params += ("type" -> leagueType)
     RiotRetriever.getData(self, url, params)
   }
 
-  def getById(id: Int) = {
-    val url = base_uri + "/api/lol/" + region + "/v1.2/champion/" + id.toString
+  def getChallengerLeague(leagueType: MatchTypes) = {
+    val url = leagueUrl + "challenger"
+    params += ("type" -> leagueType)
     RiotRetriever.getData(self, url, params)
   }
 }

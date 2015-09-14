@@ -12,7 +12,7 @@ class CurrentGame extends RiotApi {
   }
 
   def getRecentGames(summonerId: Long) = {
-    val url = base_uri + "/api/lol/" + region + "/v1.3/game/by-summoner/" + summonerId + "/recent"
+    val url = baseUri + "/api/lol/" + region + "/v1.3/game/by-summoner/" + summonerId + "/recent"
     RiotRetriever.getData(self, url, params)
   }
 }

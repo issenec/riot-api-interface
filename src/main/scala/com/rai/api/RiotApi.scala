@@ -13,7 +13,7 @@ trait RiotApi extends Actor {
   val id = conf.getString("dev.summoner.id")
 
   /** Starting and default values */
-  val base_uri = "https://" + region + ".api.pvp.net"
+  val baseUri = "https://" + region + ".api.pvp.net"
   var params = Map[String, String]()
 
   def returnResults(res: Response) = {
