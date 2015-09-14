@@ -26,7 +26,7 @@ object RiotRetriever {
       }
     }
   }))
-  val throttler = system.actorOf(Props(new TimerBasedThrottler(8 msgsPer 10.second)))
+  val throttler = system.actorOf(Props(new TimerBasedThrottler(8 msgsPer 10.seconds)))
   throttler ! SetTarget(Some(riotActor))
 
   def getData(actor: ActorRef, url: String, params: Map[String, String]) = {
