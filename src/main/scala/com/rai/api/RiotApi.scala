@@ -10,7 +10,7 @@ trait RiotApi extends Actor {
   val conf = ConfigFactory.load("riot.conf")
   val key = conf.getString("dev.key")
   val region = conf.getString("dev.region")
-  val id = conf.getString("dev.summoner.id")
+  val mySummonerId = conf.getString("dev.summoner.id")
 
   /** Starting and default values */
   val baseUri = "https://" + region + ".api.pvp.net"

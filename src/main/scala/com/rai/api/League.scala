@@ -29,13 +29,14 @@ class League extends RiotApi {
 
   def getMasterLeague(leagueType: MatchTypes) = {
     val url = leagueUrl + "master"
-    params += ("type" -> leagueType)
+    /** Need to switch to String */
+    params += ("type" -> leagueType.toString)
     RiotRetriever.getData(self, url, params)
   }
 
   def getChallengerLeague(leagueType: MatchTypes) = {
     val url = leagueUrl + "challenger"
-    params += ("type" -> leagueType)
+    params += ("type" -> leagueType.toString)
     RiotRetriever.getData(self, url, params)
   }
 }

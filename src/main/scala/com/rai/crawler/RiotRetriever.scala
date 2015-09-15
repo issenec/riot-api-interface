@@ -20,10 +20,8 @@ object RiotRetriever {
   val system = ActorSystem("riotApi")
   val riotActor = system.actorOf(Props(new Actor {
     def receive = {
-      case ApiInputs(actor, url, params) => {
-        println("launching api call")
+      case ApiInputs(actor, url, params) =>
         sprayHttpClient.get(url, params, Map[String, String]()).map { res => actor ! res }
-      }
     }
   }))
   val throttler = system.actorOf(Props(new TimerBasedThrottler(8 msgsPer 10.seconds)))
