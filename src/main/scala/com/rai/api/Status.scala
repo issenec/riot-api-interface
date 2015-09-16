@@ -17,11 +17,11 @@ class Status extends RiotApi {
 
   def getStatus = {
     val url = statusUrl
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getStatusFor(region: String) = {
     val url = statusUrl + "/" + region
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

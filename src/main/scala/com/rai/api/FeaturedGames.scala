@@ -13,6 +13,6 @@ class FeaturedGames extends RiotApi {
 
   def getFeaturedGames = {
     val url = baseUri + "/observer-mode/rest/featured"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

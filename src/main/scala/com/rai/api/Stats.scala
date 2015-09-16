@@ -18,12 +18,12 @@ class Stats extends RiotApi {
   def getRankedFor(summonerId: Long, season: String) = {
     val url = statsUrl + summonerId.toString + "/ranked"
     params += ("season" -> season)
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getSummaryFor(summonerId: Long, season: String) = {
     val url = statsUrl + summonerId.toString + "/summary"
     params += ("season" -> season)
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

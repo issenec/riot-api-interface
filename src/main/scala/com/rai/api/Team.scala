@@ -18,11 +18,11 @@ class Team extends RiotApi {
 
   def getTeamsBySummoner(summonerIds: List[Long]) = {
     val url = teamUrl + "by-summoner/" + summonerIds.mkString(",")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getTeams(teamIds: List[Long]) = {
     val url = teamUrl + teamIds.mkString(",")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

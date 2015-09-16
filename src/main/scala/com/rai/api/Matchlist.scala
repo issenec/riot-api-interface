@@ -25,6 +25,6 @@ class Matchlist extends RiotApi {
       params += ("rankedQueues" -> rankedQueues.mkString(","))
     if (!seasons.isEmpty)
       params += ("seasons" -> seasons.mkString(","))
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

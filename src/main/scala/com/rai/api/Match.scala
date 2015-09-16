@@ -15,6 +15,6 @@ class Match extends RiotApi {
     val url = baseUri + "/api/lol/" + region + "/v2.2/match/" + matchId.toString
     if (includeTimeline)
       params += ("includeTimeline" -> "true")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

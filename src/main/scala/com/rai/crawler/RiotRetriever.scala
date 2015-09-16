@@ -11,20 +11,25 @@ import scala.concurrent.duration._
 import uk.co.robinmurphy.http._
 
 
+class RiotActor extends Actor {
+  val sprayHttpClient = new SprayHttpClient
+
+  def receive = {
+    case ApiInputs(actor, url, params) => {
+      sprayHttpClient.get(url, params, Map[String, String]()).map { res => actor ! res }
+    }
+  }
+}
+
+
 object RiotRetriever {
   implicit val timeout = Timeout(10.seconds)
   val conf = ConfigFactory.load("riot.conf")
   val key = conf.getString("dev.key")
 
-  val sprayHttpClient = new SprayHttpClient
   val system = ActorSystem("riotApi")
-  val riotActor = system.actorOf(Props(new Actor {
-    def receive = {
-      case ApiInputs(actor, url, params) =>
-        sprayHttpClient.get(url, params, Map[String, String]()).map { res => actor ! res }
-    }
-  }))
-  val throttler = system.actorOf(Props(new TimerBasedThrottler(8 msgsPer 10.seconds)))
+  val riotActor = system.actorOf(Props[RiotActor])
+  val throttler = system.actorOf(Props(classOf[TimerBasedThrottler], 5 msgsPer 10.second))
   throttler ! SetTarget(Some(riotActor))
 
   def getData(actor: ActorRef, url: String, params: Map[String, String]) = {

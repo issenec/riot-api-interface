@@ -15,11 +15,11 @@ class Game extends RiotApi {
 
   def getMyRecentGames() = {
     val url = baseUri + "/api/lol/" + region + "/v1.3/game/by-summoner/" + mySummonerId + "/recent"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getRecentGames(summonerId: Long) = {
-    val url = baseUri + "/api/lol/" + region + "/v1.3/game/by-summoner/" + summonerId + "/recent"
-    RiotRetriever.getData(self, url, params)
+    val url = baseUri + "/api/lol/" + region + "/v1.3/game/by-summoner/" + summonerId.toString + "/recent"
+    RiotRetriever.getData(sender, url, params)
   }
 }

@@ -24,26 +24,26 @@ class Summoner extends RiotApi {
 
   def getObjectsByName(summonerNames: List[String]) = {
     val url = summonerUrl + "by-name/" + summonerNames.mkString(",")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getObjectsById(summonerIds: List[Long]) = {
     val url = summonerUrl + summonerIds.mkString(",")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getMasteries(summonerIds: List[Long]) = {
     val url = summonerUrl + summonerIds.mkString(",") + "/masteries"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getNames(summonerIds: List[Long]) = {
     val url = summonerUrl + summonerIds.mkString(",") + "/name"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getRunes(summonerIds: List[Long]) = {
     val url = summonerUrl + summonerIds.mkString(",") + "/runes"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

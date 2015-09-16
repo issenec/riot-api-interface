@@ -19,11 +19,11 @@ class Champion extends RiotApi {
     val url = championUrl
     if (freeToPlay)
       params += ("freeToPlay" -> "true")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getById(id: Int) = {
     val url = championUrl + "/" + id.toString
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }

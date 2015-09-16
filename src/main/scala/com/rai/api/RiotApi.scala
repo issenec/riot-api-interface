@@ -1,10 +1,11 @@
 package com.rai.api
 
 import akka.actor.Actor
-import com.sksamuel.elastic4s.ElasticClient
+import com.sksamuel.elastic4s.{ElasticsearchClientUri, ElasticClient}
 import com.sksamuel.elastic4s.ElasticDsl._
 import com.sksamuel.elastic4s.source.StringDocumentSource
 import com.typesafe.config.ConfigFactory
+import org.elasticsearch.common.settings.ImmutableSettings
 import uk.co.robinmurphy.http.Response
 
 
@@ -15,7 +16,10 @@ trait RiotApi extends Actor {
   val key = conf.getString("dev.key")
   val region = conf.getString("dev.region")
   val mySummonerId = conf.getString("dev.summoner.id")
-  val esClient = ElasticClient.local
+
+  val uri = ElasticsearchClientUri(conf.getString("es.address"))
+  val settings = ImmutableSettings.settingsBuilder().put("cluster.name", conf.getString("es.cluster")).build()
+  val esClient = ElasticClient.remote(settings, uri)
 
   /** Starting and default values */
   val baseUri = "https://" + region + ".api.pvp.net"
@@ -25,10 +29,10 @@ trait RiotApi extends Actor {
     println(res.toString)
   }
 
-  def sendToEs(res: Response, dataType: String) = {
+  def sendToEs(res: Response, recordId: String, dataType: String) = {
     val indexLocation = esConf.getString("es.index") + "/" + dataType
     esClient.execute {
-      index into indexLocation doc StringDocumentSource(res.body)
+      index into indexLocation id recordId doc StringDocumentSource(res.body)
     }
   }
 }

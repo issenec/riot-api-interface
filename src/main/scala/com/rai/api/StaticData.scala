@@ -50,7 +50,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (champData)
       params += ("champData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getChampionById(id: Int, version: String, champData: Boolean) = {
@@ -58,7 +58,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (champData)
       params += ("champData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getItems(version: String, itemListData: Boolean) = {
@@ -66,7 +66,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (itemListData)
       params += ("itemListData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getItemById(id: Int, version: String, itemData: Boolean) = {
@@ -74,13 +74,13 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (itemData)
       params += ("itemData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getMap(version: String) = {
     val url = staticUrl + "map"
     params += ("version" -> version)
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getMasteries(version: String, masteryListData: Boolean) = {
@@ -88,7 +88,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (masteryListData)
       params += ("masteryListData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getMasteryById(id: Int, version: String, masteryData: Boolean) = {
@@ -96,12 +96,12 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (masteryData)
       params += ("masteryData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getRealm = {
     val url = staticUrl + "realm"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getRunes(version: String, runeListData: Boolean) = {
@@ -109,7 +109,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (runeListData)
       params += ("runeListData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getRuneById(id: Int, version: String, runeData: Boolean) = {
@@ -117,7 +117,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (runeData)
       params += ("runeData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getSummonerSpells(dataById: Boolean, version: String, spellData: Boolean) = {
@@ -127,7 +127,7 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (spellData)
       params += ("spellData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getSummonerSpellById(id: Int, version: String, spellData: Boolean) = {
@@ -135,11 +135,11 @@ class StaticData extends RiotApi {
     params += ("version" -> version)
     if (spellData)
       params += ("spellData" -> "all")
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 
   def getVersions = {
     val url = staticUrl + "versions"
-    RiotRetriever.getData(self, url, params)
+    RiotRetriever.getData(sender, url, params)
   }
 }
