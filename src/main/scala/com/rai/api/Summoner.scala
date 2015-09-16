@@ -19,7 +19,7 @@ class Summoner extends RiotApi {
     case GetSummonerMasteries(summonerIds) => getMasteries(summonerIds)
     case GetNames(summonerIds) => getNames(summonerIds)
     case GetSummonerRunes(summonerIds) => getRunes(summonerIds)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getObjectsByName(summonerNames: List[String]) = {

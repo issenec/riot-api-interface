@@ -15,7 +15,7 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.sksamuel.elastic4s" %% "elastic4s-core" % "1.7.0",
+  "com.sksamuel.elastic4s" %% "elastic4s-core" % "1.7.4",
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-contrib" % akkaVersion,
   "io.spray" %% "spray-client" % "1.3.3",

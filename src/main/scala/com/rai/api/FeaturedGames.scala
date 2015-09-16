@@ -8,7 +8,7 @@ case class GetFeaturedGames()
 class FeaturedGames extends RiotApi {
   def receive = {
     case GetFeaturedGames => getFeaturedGames
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getFeaturedGames = {

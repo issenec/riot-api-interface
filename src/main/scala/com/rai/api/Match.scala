@@ -8,7 +8,7 @@ case class GetMatch(matchId: Long, includeTimeline: Boolean = false)
 class Match extends RiotApi {
   def receive = {
     case GetMatch(matchId, includeTimeline) => getMatch(matchId, includeTimeline)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getMatch(matchId: Long, includeTimeline: Boolean) = {

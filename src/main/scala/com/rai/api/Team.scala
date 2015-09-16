@@ -13,7 +13,7 @@ class Team extends RiotApi {
   def receive = {
     case GetTeamsBySummoner(summonerIds) => getTeamsBySummoner(summonerIds)
     case GetTeams(teamIds) => getTeams(teamIds)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getTeamsBySummoner(summonerIds: List[Long]) = {

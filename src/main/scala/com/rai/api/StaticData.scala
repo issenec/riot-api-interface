@@ -40,7 +40,7 @@ class StaticData extends RiotApi {
     case GetSummonerSpells(dataById, version, spellData) => getSummonerSpells(dataById, version, spellData)
     case GetSummonerSpellById(id, version, spellData) => getSummonerSpellById(id, version, spellData)
     case GetVersions => getVersions
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getChampions(dataById: Boolean, version: String, champData: Boolean) = {

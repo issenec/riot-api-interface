@@ -12,7 +12,7 @@ class Stats extends RiotApi {
   def receive = {
     case GetRankedFor(summonerId, season) => getRankedFor(summonerId, season)
     case GetSummaryFor(summonerId, season) => getSummaryFor(summonerId, season)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getRankedFor(summonerId: Long, season: String) = {

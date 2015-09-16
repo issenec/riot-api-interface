@@ -12,7 +12,7 @@ class Status extends RiotApi {
   def receive = {
     case GetStatus => getStatus
     case GetStatusFor(region) => getStatusFor(region)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getStatus = {

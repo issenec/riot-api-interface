@@ -24,7 +24,7 @@ class League extends RiotApi {
   def receive = {
     case GetChallengerLeague(leagueType) => getChallengerLeague(leagueType)
     case GetMasterLeague(leagueType) => getMasterLeague(leagueType)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getMasterLeague(leagueType: MatchTypes) = {

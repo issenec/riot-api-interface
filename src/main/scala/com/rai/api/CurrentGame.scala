@@ -8,7 +8,7 @@ case class GetCurrentGameFor(platformId: String, summonerId: Long)
 class CurrentGame extends RiotApi {
   def receive = {
     case GetCurrentGameFor(platformId, summonerId) => getCurrentGameFor(platformId, summonerId)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getCurrentGameFor(platformId: String, summonerId: Long) = {

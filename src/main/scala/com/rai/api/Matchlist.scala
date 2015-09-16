@@ -13,7 +13,7 @@ class Matchlist extends RiotApi {
   def receive = {
     case GetMatchlist(summonerId, championIds, rankedQueues, seasons) =>
       getMatchlist(summonerId, championIds, rankedQueues, seasons)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getMatchlist(summonerId: Long, championIds: List[Int], rankedQueues: List[RankedMatchTypes],

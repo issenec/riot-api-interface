@@ -12,7 +12,7 @@ class Champion extends RiotApi {
   def receive = {
     case GetAll(freeToPlay) => getAll(freeToPlay)
     case GetById(champ) => getById(champ)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getAll(freeToPlay: Boolean) = {

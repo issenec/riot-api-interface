@@ -10,7 +10,7 @@ class Game extends RiotApi {
   def receive = {
     case GetMyRecentGames() => getMyRecentGames()
     case GetRecentGames(summonerId) => getRecentGames(summonerId)
-    case res: Response => returnResults(res)
+    case res: Response => printResponse(res)
   }
 
   def getMyRecentGames() = {
